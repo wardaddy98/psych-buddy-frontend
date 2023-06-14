@@ -1,0 +1,12 @@
+.wrapper {
+  background-color: var(--primary);
+  border-radius: 4px;
+
+  .form {
+    .submit_wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}

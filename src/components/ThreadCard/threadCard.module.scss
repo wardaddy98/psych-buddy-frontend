@@ -1,0 +1,54 @@
+.card {
+  background-color: var(--primary);
+  width: 100%;
+
+  .top_content {
+    display: grid;
+    grid-template-columns: 70% auto;
+    gap: 1rem;
+
+    .first_section {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      .category_tag {
+        width: fit-content;
+        background-color: var(--secondary);
+        padding: 4px;
+        border-radius: 4px;
+        color: var(--white);
+        font-size: 1rem;
+      }
+    }
+    .second_section {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      .detail {
+        text-align: end;
+        display: flex;
+        flex-direction: column;
+        gap: 1px;
+      }
+    }
+  }
+
+  .footer {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+  }
+}
+
+.heading {
+  font-size: 1rem;
+  white-space: pre;
+  font-weight: 500;
+}
+
+.value {
+  font-size: 1rem;
+  font-weight: 400;
+}

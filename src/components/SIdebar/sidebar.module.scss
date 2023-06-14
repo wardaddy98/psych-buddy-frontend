@@ -1,0 +1,24 @@
+.side_bar {
+  width: 200px;
+  position: fixed;
+  height: calc(100vh - 8.5vh);
+  top: 8.5vh;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  background-color: var(--white);
+  padding: 2rem 0.5rem;
+  box-shadow: var(--shadow);
+
+  .menu {
+    li {
+      border-radius: 4px;
+
+      i,
+      span {
+        font-size: 1rem !important;
+        font-weight: 500 !important;
+      }
+    }
+  }
+}
