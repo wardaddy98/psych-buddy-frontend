@@ -1,0 +1,14 @@
+.wrapper {
+  position: absolute;
+  bottom: 36px;
+  right: 0;
+  border: 1px solid var(--dark-grey);
+  border-radius: 4px;
+
+  .button_wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: white !important;
+  }
+}
