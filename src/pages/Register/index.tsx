@@ -15,7 +15,10 @@ const Register = () => {
   const handleSubmit = async (values: IRegisterValues) => {
     try {
       const { confirmPassword, password } = values;
-      if (password !== confirmPassword) return;
+      if (password !== confirmPassword) {
+        errorToast('Passwords do not match!');
+        return;
+      }
       delete values.confirmPassword;
 
       const res = await register(values).unwrap();
