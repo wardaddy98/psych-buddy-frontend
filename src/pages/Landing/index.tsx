@@ -1,9 +1,12 @@
+import { Button, Space } from 'antd';
+import { useNavigate } from 'react-router-dom';
 import MentalHealth1Json from '../../assets/mental_health1.json';
 import MentalHealth2Json from '../../assets/mental_health2.json';
 import MentalHealth3Json from '../../assets/mental_health3.json';
 import MentalHealth4Json from '../../assets/mental_health4.json';
 import MentalHealth5Json from '../../assets/mental_health5.json';
 import LandingContent from '../../components/LandingContent';
+import { useMediaQuery } from '../../hooks/useMediaQuery';
 import styles from './landing.module.scss';
 
 const content = [
@@ -35,6 +38,8 @@ const content = [
 ];
 
 const Landing = () => {
+  const navigate = useNavigate();
+  const { matches: isMobile } = useMediaQuery('(max-width: 800px)');
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>
@@ -47,6 +52,23 @@ const Landing = () => {
           enlightening conversations and personalized guidance.
         </span>
       </div>
+
+      {isMobile && (
+        <div className={styles.interaction_area}>
+          <Space direction='vertical' align='center'>
+            <span className={styles.text}>Want to try Psych-Buddy for free?</span>
+            <Button type='primary' onClick={() => navigate('/register')}>
+              Register
+            </Button>
+          </Space>
+          <Space direction='vertical' align='center'>
+            <span className={styles.text}>Already a member?</span>
+            <Button type='primary' onClick={() => navigate('/login')}>
+              Login
+            </Button>
+          </Space>
+        </div>
+      )}
 
       <div className={styles.sub_heading}>
         <span>Why choose Psych-buddy?</span>
