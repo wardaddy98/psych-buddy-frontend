@@ -1,6 +1,6 @@
 import { rootApi } from '../rootApi';
 import { ApiResponse } from '../types';
-import { GetSingleThreadResponse, GetThreadsResponse } from './types';
+import { CreateThreadResponse, GetSingleThreadResponse, GetThreadsResponse } from './types';
 
 export const threadAPi = rootApi.injectEndpoints({
   endpoints: build => ({
@@ -10,7 +10,7 @@ export const threadAPi = rootApi.injectEndpoints({
         method: 'POST',
         body: payload,
       }),
-      transformResponse: (response: ApiResponse) => response,
+      transformResponse: (response: CreateThreadResponse) => response,
     }),
 
     getHomeThreads: build.query({

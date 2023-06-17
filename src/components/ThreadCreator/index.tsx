@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { useToast } from '../../hooks/useToast';
 import { useGetCategoriesQuery } from '../../redux/common/common.service';
-import { selectCategories } from '../../redux/common/common.slice';
+import { selectCategories, setCategories } from '../../redux/common/common.slice';
 import { ICategory } from '../../redux/common/types';
 import { setShowThreadCreator } from '../../redux/mainLayout/mainLayout.slice';
 import { useCreateThreadMutation } from '../../redux/thread/thread.service';
@@ -31,16 +31,18 @@ const ThreadCreator = () => {
   const [selectedCategory, setSelectedCategory] = useState('');
 
   useEffect(() => {
-    if (!categories?.length) return;
-
-    const temp = [...categories];
-    temp.push({
+    const otherCategory = {
       _id: nanoid(),
       label: 'Others',
       value: 'others',
-    });
-
-    setFormCategories(temp);
+    };
+    if (!categories?.length) {
+      setFormCategories([otherCategory]);
+    } else {
+      const temp = [...categories];
+      temp.push(otherCategory);
+      setFormCategories(temp);
+    }
   }, [categories]);
 
   const onSubmit = async (values: CreateThreadFormValues) => {
@@ -49,6 +51,10 @@ const ThreadCreator = () => {
       if (result.status === 200) {
         successToast(result.message);
         form.resetFields();
+
+        if (result?.body?.categories?.length) {
+          dispatch(setCategories(result?.body?.categories));
+        }
       }
     } catch (err: any) {
       errorToast(err?.data?.message ?? undefined);
