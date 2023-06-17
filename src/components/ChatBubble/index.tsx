@@ -52,16 +52,14 @@ const ChatBubble = (props: IChatBubble) => {
             )}
           </div>
 
-          {(user?.userType === 'professional' || selectedThread?.postedBy?._id === user?._id) && (
-            <Space direction={isMobile ? 'vertical' : 'horizontal'} style={{ marginTop: '8px' }}>
-              {user?.userType === 'professional' && (
-                <Tag className={styles.tag}>Healthcare Professional</Tag>
-              )}
-              {selectedThread?.postedBy?._id === user?._id && (
-                <Tag className={styles.tag}>Original Poster</Tag>
-              )}
-            </Space>
-          )}
+          <Space direction={isMobile ? 'vertical' : 'horizontal'} style={{ marginTop: '8px' }}>
+            {user?.userType === 'professional' && (
+              <Tag className={styles.tag}>Healthcare Professional</Tag>
+            )}
+            {!selectedThread?.postAnonymously && selectedThread?.postedBy?._id === user?._id && (
+              <Tag className={styles.tag}>Original Poster</Tag>
+            )}
+          </Space>
         </div>
 
         <p className={styles.message}>{message}</p>

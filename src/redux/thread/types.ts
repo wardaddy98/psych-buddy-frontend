@@ -1,6 +1,6 @@
 import { IUser } from '../../commonTypes';
-import { ICategory } from '../common/types';
 import { ApiResponse } from '../types';
+import { ICategory } from './../common/types';
 
 export interface IThread {
   _id: string;
@@ -39,5 +39,11 @@ export interface GetThreadsResponse extends ApiResponse {
 export interface GetSingleThreadResponse extends ApiResponse {
   body: {
     thread: IThread;
+  };
+}
+
+export interface CreateThreadResponse extends ApiResponse {
+  body?: {
+    categories?: ICategory[];
   };
 }
