@@ -52,7 +52,15 @@ const ChatBubble = (props: IChatBubble) => {
             )}
           </div>
 
-          <Space direction={isMobile ? 'vertical' : 'horizontal'} style={{ marginTop: '8px' }}>
+          <Space
+            direction={isMobile ? 'vertical' : 'horizontal'}
+            style={
+              user?.userType !== 'professional' &&
+              (selectedThread?.postAnonymously || selectedThread?.postedBy?._id !== user?._id)
+                ? { display: 'none' }
+                : { marginTop: '8px' }
+            }
+          >
             {user?.userType === 'professional' && (
               <Tag className={styles.tag}>Healthcare Professional</Tag>
             )}
